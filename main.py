@@ -1,1 +1,2 @@
-print("greetings boots")
+from stats import main
+main()
