@@ -1,3 +1,4 @@
+import sys
 def get_book_text(filepath):
     with open(filepath) as f:
         file_conent = f.read()
@@ -20,7 +21,11 @@ def get_character_count(filepath):
     
 
 def main():
-    filepath = "books/frankenstein.txt"
+    if len(sys.argv) < 2:
+        print("Usage: python3 main.py <path_to_book>")
+        return sys.exit(1)
+    
+    filepath = sys.argv[1]
     book_text = get_book_text(filepath).splitlines()
     num_words = sum(len(line.split()) for line in book_text)
     #print(f"{num_words} words found in the document")
@@ -32,4 +37,3 @@ def main():
     for char in get_character_count(filepath):
         print(f"{char[0]}: {char[1]}")
     print("============= END ===============")
-main()
